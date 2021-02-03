@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Editing an article</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
+</head>
+<body style="width: 640px; margin: auto;">
+	<div th:insert="blocks/header :: header"></div>
+
+	<div th:each="el : ${post}" class="mt-4 border border-success rounded-lg p-4">
+		<form method="post">
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" th:value="${el.title}" class="form-control"
+				id="title" placeholder="Title" name="title" required>
+			</div>
+			<div class="form-group">
+				<label for="anons">Announcement:</label>
+				<input type="text" th:value="${el.anons}" class="form-control"
+				id="anons" placeholder="Announcement" name="anons" required>
+			</div>
+			<div class="form-group">
+				<label for="full_text">Article:</label>
+				<textarea th:text="${el.full_text}" class="form-control"
+				id="full_text" placeholder="..." name="full_text" required />
+			</div>
+			<button type="submit" class="btn btn-success">Edit an article</button>
+		</form>
+	</div>
+</body>
+</html>
